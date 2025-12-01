@@ -19,7 +19,7 @@ export default function AddCandidateToJobModal({ job, onClose, onSuccess }) {
       const response = await axios.get("http://localhost:3333/api/candidates")
       setCandidates(response.data)
     } catch (error) {
-      console.error("[v0] Erro ao buscar candidatos:", error)
+      console.error("Erro ao buscar candidatos:", error)
       alert("Erro ao buscar candidatos")
     }
   }
@@ -43,7 +43,7 @@ export default function AddCandidateToJobModal({ job, onClose, onSuccess }) {
       alert("Candidato adicionado à vaga com sucesso!")
       onSuccess()
     } catch (error) {
-      console.error("[v0] Erro ao adicionar candidato:", error)
+      console.error("Erro ao adicionar candidato:", error)
       alert(error.response?.data?.message || "Erro ao adicionar candidato à vaga")
     } finally {
       setLoading(false)
