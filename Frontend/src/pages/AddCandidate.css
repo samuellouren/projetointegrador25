@@ -1,0 +1,981 @@
+.add-candidate-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+}
+
+.add-candidate-main {
+  padding: 40px 20px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.form-wrapper {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  padding: 40px;
+}
+
+.form-wrapper h2 {
+  color: white;
+  font-size: 2rem;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.error-message {
+  background: rgba(239, 68, 68, 0.2);
+  border: 1px solid rgba(239, 68, 68, 0.5);
+  color: #fca5a5;
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.candidate-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.form-group input,
+.form-group textarea {
+  padding: 12px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+  font-size: 16px;
+  font-family: inherit;
+  transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #a855f7;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.form-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+.btn-cancel,
+.btn-submit {
+  padding: 12px 32px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+}
+
+.btn-cancel {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+.btn-cancel:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.btn-submit {
+  background: linear-gradient(135deg, #a855f7, #7c3aed);
+  color: white;
+}
+
+.btn-submit:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(168, 85, 247, 0.4);
+}
+
+.btn-cancel:disabled,
+.btn-submit:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Estilos para sistema de competências */
+.skills-input-wrapper {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.skills-input-wrapper input {
+  flex: 1;
+}
+
+/* Estilos para campo de entrada de competências */
+.skills-input {
+  flex: 1;
+  padding: 10px 12px;
+  border: 1px solid #7c3aed;
+  border-radius: 6px;
+  background-color: rgba(124, 58, 237, 0.05);
+  color: #fff;
+  font-size: 14px;
+}
+
+.skills-input::placeholder {
+  color: #9333ea;
+}
+
+.skills-input:focus {
+  outline: none;
+  border-color: #a855f7;
+  background-color: rgba(124, 58, 237, 0.1);
+}
+
+.btn-add-skill {
+  padding: 10px 16px;
+  background-color: #8b5cf6;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.2s;
+  white-space: nowrap;
+}
+
+.btn-add-skill:hover {
+  background-color: #7c3aed;
+}
+
+.skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.skill-tag {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background-color: rgba(139, 92, 246, 0.15);
+  border: 1px solid rgba(139, 92, 246, 0.3);
+  color: #8b5cf6;
+  border-radius: 16px;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.btn-remove-skill {
+  background: none;
+  border: none;
+  color: #8b5cf6;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background-color 0.2s;
+}
+
+.btn-remove-skill:hover {
+  background-color: rgba(139, 92, 246, 0.2);
+}
+
+.form-hint {
+  display: block;
+  margin-top: 6px;
+  color: #9ca3af;
+  font-size: 0.85rem;
+  font-style: italic;
+}
+
+/* Melhorar estilos da seleção de competências */
+.job-selection-wrapper {
+  margin-bottom: 16px;
+}
+
+.job-select {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.job-select:focus {
+  outline: none;
+  border-color: #a855f7;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.job-select option {
+  background: #1f2937;
+  color: white;
+}
+
+/* Adicionar header com compatibilidade em tempo real */
+.skills-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  gap: 16px;
+}
+
+.skills-header h4 {
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.compatibility-indicator {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  white-space: nowrap;
+}
+
+.compatibility-text {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.85rem;
+}
+
+.compatibility-percentage {
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+/* Melhorar grid de checkboxes */
+.skills-selection {
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  margin-bottom: 16px;
+}
+
+.skills-checkboxes {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 12px;
+  margin: 16px 0;
+  max-height: 300px;
+  overflow-y: auto;
+  padding-right: 8px;
+}
+
+.skills-checkboxes::-webkit-scrollbar {
+  width: 6px;
+}
+
+.skills-checkboxes::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 3px;
+}
+
+.skills-checkboxes::-webkit-scrollbar-thumb {
+  background: rgba(168, 85, 247, 0.3);
+  border-radius: 3px;
+}
+
+.skills-checkboxes::-webkit-scrollbar-thumb:hover {
+  background: rgba(168, 85, 247, 0.5);
+}
+
+/* Estilizar checkboxes customizadas */
+.skill-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  padding: 10px 12px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.skill-checkbox:hover {
+  background: rgba(168, 85, 247, 0.1);
+}
+
+.skill-checkbox input[type="checkbox"] {
+  display: none;
+}
+
+.checkbox-custom {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(168, 85, 247, 0.4);
+  border-radius: 4px;
+  background: transparent;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.skill-checkbox input[type="checkbox"]:checked + .checkbox-custom {
+  background: linear-gradient(135deg, #a855f7, #7c3aed);
+  border-color: #7c3aed;
+}
+
+.skill-checkbox input[type="checkbox"]:checked + .checkbox-custom::after {
+  content: '✓';
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.skill-label {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.skill-checkbox:hover .skill-label {
+  color: white;
+}
+
+/* Melhorar botão de adicionar vaga */
+.btn-add-job-application {
+  width: 100%;
+  padding: 14px 24px;
+  background: linear-gradient(135deg, #a855f7 0%, #7c3aed 100%);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  margin-top: 16px;
+  box-shadow: 0 4px 15px rgba(168, 85, 247, 0.3);
+  position: relative;
+  overflow: hidden;
+  letter-spacing: 0.3px;
+}
+
+.btn-add-job-application::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  transition: left 0.5s ease;
+}
+
+.btn-add-job-application:hover:not(:disabled)::before {
+  left: 100%;
+}
+
+.btn-add-job-application:hover:not(:disabled) {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(168, 85, 247, 0.5);
+}
+
+.btn-add-job-application:active:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 15px rgba(168, 85, 247, 0.3);
+}
+
+.btn-add-job-application:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Adicionando estilos para o botão "Adicionar Vaga" */
+.btn-add-job-application-new {
+  width: 100%;
+  padding: 16px 24px;
+  background: linear-gradient(135deg, #a855f7 0%, #7c3aed 100%);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 1.05rem;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  margin-top: 20px;
+  box-shadow: 0 8px 20px rgba(168, 85, 247, 0.35);
+  position: relative;
+  overflow: hidden;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.btn-add-job-application-new::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  transition: left 0.6s ease;
+  z-index: 1;
+}
+
+.btn-add-job-application-new:hover:not(:disabled) {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(168, 85, 247, 0.5);
+}
+
+.btn-add-job-application-new:hover:not(:disabled)::before {
+  left: 100%;
+}
+
+.btn-add-job-application-new:active:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+.btn-add-job-application-new:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-add-job-application-new span {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+/* Melhorar lista de vagas adicionadas */
+.job-applications-list {
+  margin-top: 20px;
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+}
+
+.job-applications-list h4 {
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0 0 12px 0;
+  font-size: 0.95rem;
+}
+
+.job-application-item {
+  padding: 12px;
+  background: rgba(168, 85, 247, 0.05);
+  border: 1px solid rgba(168, 85, 247, 0.2);
+  border-radius: 8px;
+  margin-bottom: 10px;
+  transition: all 0.2s ease;
+}
+
+.job-application-item:hover {
+  background: rgba(168, 85, 247, 0.08);
+  border-color: rgba(168, 85, 247, 0.3);
+}
+
+.job-app-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+
+.job-app-header strong {
+  color: white;
+  font-size: 0.95rem;
+  flex: 1;
+  min-width: 150px;
+}
+
+.compatibility-badge {
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  white-space: nowrap;
+  border: 1px solid;
+  border-color: inherit;
+}
+
+.btn-remove-job-app {
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  background: rgba(239, 68, 68, 0.2);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: #fca5a5;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  line-height: 1;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-remove-job-app:hover {
+  background: rgba(239, 68, 68, 0.3);
+  border-color: rgba(239, 68, 68, 0.5);
+}
+
+.job-app-skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.skill-tag-small {
+  display: inline-block;
+  padding: 4px 10px;
+  background: rgba(168, 85, 247, 0.2);
+  border: 1px solid rgba(168, 85, 247, 0.3);
+  color: #c4b5fd;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+/* Adicionando estilos para mensagens de erro e carregamento */
+.loading-message {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  text-align: center;
+  color: #999;
+}
+
+.loading-message p {
+  font-size: 16px;
+  margin-top: 20px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.spinner {
+  border: 4px solid rgba(255, 255, 255, 0.1);
+  border-top: 4px solid #a855f7;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.info-message {
+  padding: 20px;
+  background-color: rgba(59, 130, 246, 0.15);
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  border-radius: 8px;
+  color: #93c5fd;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.error-message.error-large {
+  padding: 20px;
+  background-color: rgba(239, 68, 68, 0.15);
+  border: 2px solid rgba(239, 68, 68, 0.5);
+  border-radius: 12px;
+  margin-bottom: 30px;
+}
+
+.error-message.error-large strong {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 16px;
+  color: #fca5a5;
+}
+
+.error-message.error-large p {
+  margin: 10px 0;
+  line-height: 1.5;
+  color: #fca5a5;
+}
+
+.error-message.error-large code {
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  color: #fecaca;
+}
+
+.btn-retry {
+  margin-top: 15px;
+  padding: 10px 20px;
+  background-color: #ef4444;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-retry:hover {
+  background-color: #dc2626;
+}
+
+/* Estilos para seleção de checkboxes de competências */
+.keywords-checkboxes {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 12px;
+  margin: 16px 0;
+  padding: 16px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.keywords-checkboxes::-webkit-scrollbar {
+  width: 6px;
+}
+
+.keywords-checkboxes::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 3px;
+}
+
+.keywords-checkboxes::-webkit-scrollbar-thumb {
+  background: rgba(168, 85, 247, 0.3);
+  border-radius: 3px;
+}
+
+.keywords-checkboxes::-webkit-scrollbar-thumb:hover {
+  background: rgba(168, 85, 247, 0.5);
+}
+
+.checkbox-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 6px;
+  transition: background-color 0.2s ease;
+}
+
+.checkbox-wrapper:hover {
+  background-color: rgba(168, 85, 247, 0.1);
+}
+
+.keyword-checkbox {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  accent-color: #a855f7;
+}
+
+.checkbox-label {
+  cursor: pointer;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0;
+  font-weight: 500;
+}
+
+.keyword-checkbox:checked + .checkbox-label {
+  color: #a855f7;
+  font-weight: 600;
+}
+
+/* Prévia de compatibilidade */
+.compatibility-preview {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background-color: rgba(168, 85, 247, 0.1);
+  border-radius: 8px;
+  margin: 12px 0;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.compatibility-preview strong {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.compatibility-badge-preview {
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.no-keywords-message {
+  padding: 16px;
+  background-color: rgba(249, 115, 22, 0.1);
+  border: 1px solid rgba(249, 115, 22, 0.3);
+  border-radius: 8px;
+  color: rgba(249, 115, 22, 0.9);
+  font-size: 14px;
+  margin: 12px 0;
+}
+
+/* Novos estilos para interface melhorada de competências */
+
+.skills-header-new {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.skills-header-new h4 {
+  margin: 0 0 6px 0;
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.skills-subtitle {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.85rem;
+  font-weight: 400;
+}
+
+.compatibility-display {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background: rgba(168, 85, 247, 0.05);
+  border-radius: 12px;
+  border: 1px solid rgba(168, 85, 247, 0.2);
+}
+
+.compatibility-circle {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.compatibility-percentage {
+  color: white;
+  font-size: 1.5rem;
+}
+
+.compatibility-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.compatibility-label {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.compatibility-value {
+  margin: 0;
+  color: white;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+/* Nova grid de checkboxes em cards */
+
+.keywords-checkboxes-new {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 12px;
+  margin: 20px 0;
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  max-height: 350px;
+  overflow-y: auto;
+}
+
+.keywords-checkboxes-new::-webkit-scrollbar {
+  width: 6px;
+}
+
+.keywords-checkboxes-new::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 3px;
+}
+
+.keywords-checkboxes-new::-webkit-scrollbar-thumb {
+  background: rgba(168, 85, 247, 0.3);
+  border-radius: 3px;
+}
+
+.keywords-checkboxes-new::-webkit-scrollbar-thumb:hover {
+  background: rgba(168, 85, 247, 0.5);
+}
+
+.checkbox-card {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1.5px solid rgba(168, 85, 247, 0.2);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  user-select: none;
+}
+
+.checkbox-card:hover {
+  background: rgba(168, 85, 247, 0.08);
+  border-color: rgba(168, 85, 247, 0.4);
+  transform: translateY(-2px);
+}
+
+.checkbox-input {
+  display: none;
+}
+
+.checkbox-input:checked + .checkbox-card-content {
+  color: #a855f7;
+}
+
+.checkbox-input:checked + .checkbox-card-content .checkbox-card-box {
+  background: linear-gradient(135deg, #a855f7, #7c3aed);
+  border-color: #7c3aed;
+  box-shadow: 0 4px 12px rgba(168, 85, 247, 0.3);
+}
+
+.checkbox-card-content {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  transition: color 0.2s ease;
+}
+
+.checkbox-card-box {
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(168, 85, 247, 0.3);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.checkmark {
+  color: white;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.checkbox-card-text {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.9rem;
+  font-weight: 500;
+  word-break: break-word;
+}
+
+/* Exibição de competências selecionadas */
+
+.selected-skills-display {
+  padding: 12px 16px;
+  background: rgba(168, 85, 247, 0.05);
+  border: 1px solid rgba(168, 85, 247, 0.15);
+  border-radius: 8px;
+  margin: 16px 0;
+}
+
+.selected-skills-label {
+  margin: 0 0 10px 0;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.selected-skills-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.skill-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 12px;
+  background: linear-gradient(135deg, rgba(168, 85, 247, 0.2), rgba(124, 58, 237, 0.15));
+  border: 1px solid rgba(168, 85, 247, 0.3);
+  color: #c4b5fd;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.skill-badge:hover {
+  background: linear-gradient(135deg, rgba(168, 85, 247, 0.3), rgba(124, 58, 237, 0.25));
+  border-color: rgba(168, 85, 247, 0.5);
+}
